@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bakso Pak Slamet – Pesan, Antri, Beres</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav">
+  <a class="logo" href="#top">Bakso Pak Slamet</a>
+  <nav>
+    <a href="#katalog">Katalog</a><a href="#antrian">Antrian</a><a href="#biaya">Biaya</a>
+    <a href="#pitch">Pitch deck</a><a href="#desain">Flowchart &amp; ERD</a>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-text">
+    <h1>Pembeli antre rapi.<br>Penjual tahu untungnya.</h1>
+    <p>Sistem sederhana untuk pedagang bakso: katalog menu yang mudah diubah, nomor antrian otomatis, dan hitung modal per mangkok tanpa buku catatan.</p>
+    <div class="cta"><a class="btn" href="#katalog">Lihat menu &amp; pesan</a><a class="btn ghost" href="#pitch">Baca pitch deck</a></div>
+  </div>
+  <div class="bowl" aria-hidden="true">
+    <div class="steam"><i></i><i></i><i></i></div>
+    <div class="bowl-body"><span>🍜</span></div>
+  </div>
+</section>
+
+<section class="problems">
+  <article><b>Antrian kacau</b><p>Pembeli saling serobot, pesanan terlewat.</p></article>
+  <article><b>Biaya tak terhitung</b><p>Harga jual ditebak, untung rugi tidak jelas.</p></article>
+  <article><b>Daftar menu berantakan</b><p>Harga berubah, tulisan di spanduk tidak ikut berubah.</p></article>
+</section>
+
+<section id="katalog" class="wrap">
+  <h2>Katalog menu</h2>
+  <div class="tools">
+    <input id="cari" type="search" placeholder="Cari menu, mis. urat" aria-label="Cari menu">
+    <div id="filter" class="chips"></div>
+  </div>
+  <div class="split">
+    <div id="grid" class="grid"></div>
+    <aside class="cart" aria-live="polite">
+      <h3>Pesanan kamu</h3>
+      <ul id="cartList"></ul>
+      <p class="total">Total <b id="cartTotal">Rp0</b></p>
+      <input id="nama" placeholder="Nama pemesan" maxlength="20">
+      <button class="btn full" id="pesan">Pesan &amp; ambil nomor antrian</button>
+    </aside>
+  </div>
+  <details class="admin">
+    <summary>Kelola menu (untuk penjual)</summary>
+    <form id="formMenu">
+      <input id="mNama" placeholder="Nama menu" required>
+      <input id="mHarga" type="number" min="1000" step="500" placeholder="Harga (Rp)" required>
+      <select id="mKat"><option>Bakso</option><option>Tambahan</option><option>Minuman</option></select>
+      <button class="btn" type="submit">Tambah menu</button>
+    </form>
+  </details>
+</section>
+
+<section id="antrian" class="wrap dark">
+  <h2>Antrian hari ini</h2>
+  <div class="queue-top">
+    <div class="now"><small>Sedang dilayani</small><strong id="nowServing">–</strong></div>
+    <button class="btn" id="next">Panggil berikutnya</button>
+    <button class="btn ghost" id="resetQ">Reset antrian</button>
+  </div>
+  <ol id="queueList" class="queue"></ol>
+</section>
+
+<section id="biaya" class="wrap">
+  <h2>Hitung modal &amp; untung per porsi</h2>
+  <div class="calc">
+    <div id="bahan"></div>
+    <div class="calc-out">
+      <label>Target untung (%) <input id="margin" type="number" value="40" min="0" max="200"></label>
+      <p>Modal per porsi <b id="hpp">Rp0</b></p>
+      <p>Harga jual disarankan <b id="saran">Rp0</b></p>
+      <p>Untung per porsi <b id="untung">Rp0</b></p>
+    </div>
+  </div>
+</section>
+
+<section id="pitch" class="wrap dark">
+  <h2>Pitch deck</h2>
+  <div class="deck" id="deck">
+    <div class="slide on"><h3>Bakso Pak Slamet Digital</h3><p>Antrian dan biaya beres dari satu halaman.</p></div>
+    <div class="slide"><h3>Masalah</h3><p>Antrian manual menimbulkan keributan. Harga ditentukan dengan perasaan. Daftar menu sulit diperbarui.</p></div>
+    <div class="slide"><h3>Solusi</h3><p>Katalog digital, nomor antrian otomatis, kalkulator modal. Berjalan di HP biasa tanpa instalasi.</p></div>
+    <div class="slide"><h3>Cara kerja</h3><p>Pembeli pilih menu, ambil nomor, tunggu dipanggil. Penjual memanggil satu per satu dan melihat untung.</p></div>
+    <div class="slide"><h3>Pasar</h3><p>Jutaan pedagang kuliner kecil di Indonesia belum punya sistem pencatatan sederhana.</p></div>
+    <div class="slide"><h3>Model bisnis</h3><p>Gratis untuk UMKM dasar. Paket tambahan: laporan harian, cetak struk, pembayaran QRIS.</p></div>
+    <div class="slide"><h3>Rencana</h3><p>Uji coba 1 warung selama 1 bulan, perbaiki, lalu perluas ke pedagang sekitar.</p></div>
+  </div>
+  <div class="deck-nav"><button class="btn ghost" id="prev">Sebelumnya</button><span id="pg">1 / 7</span><button class="btn" id="nxt">Berikutnya</button></div>
+</section>
+
+<section id="desain" class="wrap">
+  <h2>Flowchart</h2>
+  <div class="flow">
+    <div class="node start">Mulai</div><i>↓</i>
+    <div class="node">Pembeli buka katalog</div><i>↓</i>
+    <div class="node">Pilih menu &amp; jumlah</div><i>↓</i>
+    <div class="node dec">Keranjang kosong?</div>
+    <div class="branch"><span>Ya → kembali pilih menu</span><span>Tidak ↓</span></div>
+    <div class="node">Isi nama &amp; pesan</div><i>↓</i>
+    <div class="node">Sistem beri nomor antrian</div><i>↓</i>
+    <div class="node">Penjual panggil nomor berikutnya</div><i>↓</i>
+    <div class="node">Pesanan diantar &amp; dibayar</div><i>↓</i>
+    <div class="node start">Selesai</div>
+  </div>
+
+  <h2>ERD</h2>
+  <div class="erd">
+    <div class="ent"><h4>PRODUK</h4><ul><li>id (PK)</li><li>nama</li><li>harga</li><li>kategori</li><li>aktif</li></ul></div>
+    <div class="rel">1 ─── N</div>
+    <div class="ent"><h4>DETAIL_PESANAN</h4><ul><li>id (PK)</li><li>pesanan_id (FK)</li><li>produk_id (FK)</li><li>jumlah</li><li>subtotal</li></ul></div>
+    <div class="rel">N ─── 1</div>
+    <div class="ent"><h4>PESANAN</h4><ul><li>id (PK)</li><li>nomor_antrian</li><li>nama_pemesan</li><li>total</li><li>status</li><li>waktu</li></ul></div>
+    <div class="ent"><h4>BAHAN</h4><ul><li>id (PK)</li><li>nama</li><li>harga_beli</li><li>pemakaian_per_porsi</li></ul></div>
+    <div class="rel">N ─── N</div>
+    <div class="ent"><h4>PRODUK_BAHAN</h4><ul><li>produk_id (FK)</li><li>bahan_id (FK)</li><li>takaran</li></ul></div>
+  </div>
+
+  <h2>Pseudocode</h2>
+  <div class="code-grid">
+<pre>// Ambil nomor antrian
+FUNGSI buatPesanan(nama, keranjang)
+  JIKA keranjang kosong
+    TAMPILKAN "Pilih menu dulu"
+    KEMBALI
+  nomor ← nomorTerakhir + 1
+  total ← 0
+  UNTUK setiap item DI keranjang
+    total ← total + item.harga × item.jumlah
+  SIMPAN pesanan(nomor, nama, total, "menunggu")
+  TAMPILKAN nomor
+AKHIR FUNGSI</pre>
+<pre>// Panggil berikutnya
+FUNGSI panggilBerikutnya()
+  JIKA ada pesanan "dilayani"
+    ubah status → "selesai"
+  p ← pesanan "menunggu" pertama
+  JIKA p ada
+    p.status ← "dilayani"
+    TAMPILKAN p.nomor
+  LAINNYA
+    TAMPILKAN "Antrian kosong"
+AKHIR FUNGSI
+
+// Harga jual
+FUNGSI hargaJual(bahan[], margin)
+  hpp ← JUMLAH(bahan.harga × bahan.takaran)
+  KEMBALI hpp × (1 + margin / 100)
+AKHIR FUNGSI</pre>
+  </div>
+</section>
+
+<footer>Dibuat untuk membantu UMKM kuliner. Data tersimpan di perangkat kamu.</footer>
+<div id="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>
